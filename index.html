@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campeonato Bethel 2020</title>
+  <link rel="stylesheet" href="./assets/css/stylesheet.css">
+</head>
+<body>
+  <header>
+    <div id="menu" class="sidenav">
+      <a href="#" class="closebtn" onclick="closeMenu()">&times;</a>
+      <a href="#" onclick="loadHome()">Home</a>
+      <button class="dropdown-btn">Ligas
+        <span class="dawn-menu" >&#187;</span>
+      </button>
+      <div class="dropdown-container">
+        <a href="#">Masculina mayor</a>
+        <a href="#">Infantil</a>
+        <a href="#">Juvenil masculina</a>
+        <a href="#">Juvenil femenina</a>
+        <a href="#">Caritas</a>
+      </div>
+      <a href="#">Reglamento</a>
+      <a href="#">Formulario inscripción</a>
+      <a href="#">Quiero patrocinar</a>
+    </div>
+    <div class="bar-title">
+      <span class="ham-menu" onclick="openMenu()">&#9776;</span>
+      <h2>Torneo Bethel 2020</h2>
+    </div>
+  </header>
+
+  <main>
+    <div class="publicity">
+      <img src="./assets/images/banner.gif" alt="Publicity banner">
+    </div>
+    <div id="content">
+      <div id="current-content">
+        <h3>Faltan</h3>
+        <div class="count-down">
+          <div id="days"></div>
+          <div id="time-down"></div>
+        </div>
+        <h4>Para que el reto empiece</h4>
+        <h3>¡Estas listo!</h3>
+      </div>  
+    </div>
+  </main>
+
+  <script>
+    /* ----------------------------- */
+    /* ----- main-menu options ----- */
+    /* ----------------------------- */
+
+    function openMenu() {
+      document.getElementById("menu").style.width = "230px"
+    }
+
+    function closeMenu() {
+      document.getElementById("menu").style.width = "0";
+    }
+
+    /* ------------------------------ */
+    /* ----- count down  script ----- */
+    /* ------------------------------ */
+
+    var countdowndate = new Date("Apr 6, 2020 09:00:00").getTime();
+    // var countdowndate = new Date("Feb 12, 2020 18:04:00").getTime();
+
+    // update the count down
+    var x = setInterval(function() {
+
+      var now = new Date().getTime();
+      var lapse = countdowndate -now;
+
+      // time divition for days, hours, minutes and seconds
+      var days = Math.floor(lapse / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((lapse % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((lapse % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((lapse % (1000 * 60)) / (1000));
+
+      if (hours < 10)
+        hours = "0" + hours;
+
+      if (minutes < 10)
+        minutes = "0" + minutes;
+
+      if (seconds < 10)
+        seconds = "0" + seconds;
+
+
+      var days_element = document.getElementById("days");
+      var time_element = document.getElementById("time-down");
+
+      if (days_element != null && time_element != null) {
+        days_element.innerHTML = days + " días"
+        time_element.innerHTML = hours +":" + minutes + ":" + seconds;
+      }
+
+      // if the count down is over...
+      if (lapse < 0) {
+        clearInterval(x);
+        document.getElementById("content").innerHTML = loadHome();
+      }
+
+    }, 1000);
+
+    /* ------------------------- */
+    /* ----- dropdown menu ----- */
+    /* ------------------------- */
+
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+
+    for (var i = 0; i < dropdown.length; i++) {
+      dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+      });
+    }
+
+    /* ----------------------------- */
+    /* ----- load home content ----- */
+    /* ----------------------------- */
+
+    function loadHome() {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          document.getElementById("content").innerHTML =
+          this.responseText;
+        }
+      };
+      xhttp.open("GET", "home.html", true);
+      xhttp.send();
+      document.getElementById("menu").style.width = "0";
+    }
+  </script>
+</body>
+</html>

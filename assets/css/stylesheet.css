@@ -223,6 +223,7 @@ h3 {
   height: 32px;
   border-radius: 4px;
   border: 1px solid #ccc;
+  padding: 1px 8px
 }
 
 input[type=submit] {

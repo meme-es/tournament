@@ -10,8 +10,9 @@ h4 {
 }
 
 body {
-  font-family: sans-serif;
-  background-color: #edeef0;
+  font-family: Arial, Tahoma, Sans-serif;
+  /* background-color: #edeef0; */
+  background-color: #e3e5e6;
   margin: 0;
 }
 
@@ -28,6 +29,7 @@ body {
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  box-shadow: 5px 0 10px rgba(0,0,0,0.3)
 }
 
 .sidenav a, .dropdown-btn {
@@ -92,6 +94,7 @@ body {
   display: grid;
   grid-template-columns: 32px 1fr;
   background-color: white;
+  box-shadow: 0 4px 2px -2px rgba(0,0,0,0.3);
 }
 
 .bar-title > * {
@@ -101,7 +104,7 @@ body {
 /* main content */
 
 main {
-  padding-top: 48px;
+  padding-top: 62px;
 }
 
 .publicity {
@@ -114,13 +117,6 @@ img {
   margin: 0 auto;
 }
 
-#current-content {
-  text-align: center;
-  padding: 20px;
-  /* background-color: white;
-  border-radius: 10px; */
-}
-
 .count-down {
   font-size: 176px;
   font-weight: 700;
@@ -131,7 +127,53 @@ h3 {
   font-size: 36px;
 }
 
-@media screen and (max-height: 450px) {
+/* ----- home style ----- */
+
+.current-content {
+  width: 45%;
+  margin: 0 auto;
+}
+
+.table {
+  /* box-shadow: 5px 5px 10px rgba(0,0,0,0.3)   */
+  margin: 20px 5px;
+}
+
+.table-title {
+  border-radius: 10px 10px 0 0;
+  /* color: white; */
+  text-align: center;
+  padding: 8px 0;
+  background: white;
+}
+
+.his-item {
+  border-top: 1px solid silver;
+  display: grid;
+  grid-template-columns: 1fr 45px 1fr;
+  background-color: #fff;
+  text-align: center;
+  padding: 6px 0;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+
+#timer {
+  font-size: 14px;
+}
+
+@media screen and (max-height: 500px) {
   img { width: 0; }
   .sidenav { padding-top: 30px; }
   .sidenav a, .dropdown-btn { font-size: 16px; }
@@ -149,10 +191,6 @@ h3 {
     grid-template-columns: 80% 20%;
   }
 
-  #current-content {
-    padding: 12px 20px;
-  }
-
   .publicity {
     order: 1;
     background-image: url(../images/banner-vertical.gif);
@@ -161,6 +199,9 @@ h3 {
     margin: 10px 10px;
   }
 
+  .current-content {
+    width: 95%;
+  }  
   /* img { width: 40%; }
   .sidenav { padding-top: 30px; }
   .sidenav a { font-size: 16px; }
@@ -181,7 +222,24 @@ h3 {
   } */
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 500px) {
   img { width: 60%; }
   .count-down { font-size: 68px; }
+
+  .current-content {
+    width: 93%;
+  }  
+
+  .table-title{
+    padding: 5px;
+  }
+
+  .his-item {
+    padding: 6px;
+    font-size: 12px;
+  }
+
+  main {
+    padding-top: 50px;
+  }
 }

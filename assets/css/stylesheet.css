@@ -1,6 +1,7 @@
-/* * {
-  border: solid 1px red;
-} */
+ * {
+  /* border: solid 1px red; */
+  box-sizing: border-box;
+} 
 
 h1,
 h2,
@@ -61,9 +62,10 @@ body {
 .dropdown-container {
   display: none;
   background-color: #262626;
+  /* background-color:rgba(26,26,26,1); */
   padding-left: 8px;
   transition: 0.5s;
-  
+
 }
 
 .active {
@@ -147,13 +149,34 @@ h3 {
   background: white;
 }
 
-.his-item {
-  border-top: 1px solid silver;
-  display: grid;
-  grid-template-columns: 1fr 45px 1fr;
+.row-header, .table-title {
+  font-weight: bold;
+}
+
+.row {
+  border-top: 1px solid #e0e0e0;
   background-color: #fff;
   text-align: center;
   padding: 6px 0;
+}
+
+.row-historical {
+  display: grid;
+  grid-template-columns: 1fr 45px 1fr;
+}
+
+.row-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.score {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.b-score > * {
+  border-left: 1px solid #e0e0e0;
 }
 
 .left {
@@ -168,9 +191,62 @@ h3 {
   text-align: right;
 }
 
+.l-border > * {
+  border-left: 1px solid #E0E0E0;
+}
 
 #timer {
   font-size: 14px;
+}
+
+/* ----- sponsor section ----- */
+
+.form-section {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 325px;
+  margin: 0 auto;
+}
+
+.form-group {
+  padding: 6px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  padding-bottom: 3px;
+}
+
+.form-group input {
+  height: 32px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+input[type=submit] {
+  height: 32px;
+  width: 102px;
+  border-radius: 5px;
+  background: #3a89b9;
+  border: 0 none;
+  color: white;
+  font-weight: bold;
+}
+
+input[type=submit]:hover {
+  background: #226894;
+}
+
+.submit-section {
+  padding-top: 10px;
+}
+
+.small-text {
+  font-size: 14px;
+  width: 325px;
+  margin: 0 auto;  
 }
 
 @media screen and (max-height: 500px) {
@@ -178,7 +254,7 @@ h3 {
   .sidenav { padding-top: 30px; }
   .sidenav a, .dropdown-btn { font-size: 16px; }
   .count-down { font-size: 56px; }
-  
+
   h3 {
     margin: 3px 0 0 0;
     font-size: 20px;
@@ -201,7 +277,11 @@ h3 {
 
   .current-content {
     width: 95%;
-  }  
+  }
+
+  .table-body {
+    font-size: 14px;
+  }
   /* img { width: 40%; }
   .sidenav { padding-top: 30px; }
   .sidenav a { font-size: 16px; }
@@ -228,14 +308,13 @@ h3 {
 
   .current-content {
     width: 93%;
-  }  
+  }
 
   .table-title{
     padding: 5px;
   }
 
-  .his-item {
-    padding: 6px;
+  .table-body {
     font-size: 12px;
   }
 
